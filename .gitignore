@@ -1,0 +1,31 @@
+# Secrets and credentials
+.env
+.env.*
+*credentials*
+*.key
+*.pem
+suitecloud-config.p12
+suitecloud.config.js
+
+# SuiteCloud project state (account-specific)
+project.json
+
+# Build / deployment artefacts
+*.zip
+target/
+deploy/
+
+# IDE / OS
+.vscode/
+.idea/
+*.iml
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Logs
+*.log
+
+# Local notes / WIP not for publication
+local/
+notes/

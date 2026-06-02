@@ -1,0 +1,29 @@
+<customlist scriptid="customlist_acp_compliance_result">
+  <description></description>
+  <isinactive>F</isinactive>
+  <ismatrixoption>F</ismatrixoption>
+  <isordered>T</isordered>
+  <name>ACP Compliance Result</name>
+  <customvalues>
+    <customvalue scriptid="val_acp_compliance_pass">
+      <abbreviation>P</abbreviation>
+      <isinactive>F</isinactive>
+      <value>Pass</value>
+    </customvalue>
+    <customvalue scriptid="val_acp_compliance_fail">
+      <abbreviation>F</abbreviation>
+      <isinactive>F</isinactive>
+      <value>Fail</value>
+    </customvalue>
+    <customvalue scriptid="val_acp_compliance_manual_review">
+      <abbreviation>M</abbreviation>
+      <isinactive>F</isinactive>
+      <value>Manual Review</value>
+    </customvalue>
+    <customvalue scriptid="val_acp_compliance_not_checked">
+      <abbreviation>N</abbreviation>
+      <isinactive>F</isinactive>
+      <value>Not Checked</value>
+    </customvalue>
+  </customvalues>
+</customlist>

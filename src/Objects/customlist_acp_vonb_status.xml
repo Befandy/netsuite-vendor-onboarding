@@ -1,0 +1,34 @@
+<customlist scriptid="customlist_acp_vonb_status">
+  <description></description>
+  <isinactive>F</isinactive>
+  <ismatrixoption>F</ismatrixoption>
+  <isordered>T</isordered>
+  <name>ACP Vendor Onboarding Status</name>
+  <customvalues>
+    <customvalue scriptid="val_acp_vonb_status_draft">
+      <abbreviation>D</abbreviation>
+      <isinactive>F</isinactive>
+      <value>Draft</value>
+    </customvalue>
+    <customvalue scriptid="val_acp_vonb_status_pcc">
+      <abbreviation>P</abbreviation>
+      <isinactive>F</isinactive>
+      <value>Pending Compliance Check</value>
+    </customvalue>
+    <customvalue scriptid="val_acp_vonb_status_pma">
+      <abbreviation>P</abbreviation>
+      <isinactive>F</isinactive>
+      <value>Pending Manager Approval</value>
+    </customvalue>
+    <customvalue scriptid="val_acp_vonb_status_approved">
+      <abbreviation>A</abbreviation>
+      <isinactive>F</isinactive>
+      <value>Approved</value>
+    </customvalue>
+    <customvalue scriptid="val_acp_vonb_status_rejected">
+      <abbreviation>R</abbreviation>
+      <isinactive>F</isinactive>
+      <value>Rejected</value>
+    </customvalue>
+  </customvalues>
+</customlist>
