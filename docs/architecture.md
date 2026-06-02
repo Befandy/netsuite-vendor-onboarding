@@ -99,5 +99,5 @@ For Manual Review case, the request stays in Pending Compliance Check with `comp
 
 ## Workato recipe
 
-![Workato recipe — full flow](screenshots/workato-recipe.jpg)
+<img src="screenshots/workato-recipe.jpg" alt="Workato recipe — full flow" width="500">
 
