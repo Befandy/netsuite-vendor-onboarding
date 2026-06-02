@@ -24,8 +24,6 @@ flowchart TD
     Status -- Other --> InProg[Banner: 'In progress'<br/>+ View button]
 ```
 
-Status comparison uses numeric IDs (`APPROVED_STATUS = 4`, `REJECTED_STATUS = 5`) — `getValue` on a List/Record column from SuiteQL returns the internal ID as a number.
-
 ## Request lifecycle — from creation to approval
 
 Once submitted, the request flows through a state machine. State transitions are driven by three actors: the user (button clicks), Workato (field writes), and the WorkflowAction script (cross-record updates on Approved entry). The diagram below is **time-decoupled** — the Workato block runs on a daily schedule, not synchronously after submission.
