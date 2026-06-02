@@ -3,11 +3,15 @@
  * @NScriptType UserEventScript
  * @description Show button to create/open onboarding request and display banner based on the request status.
  */
-define(['N/query', 'N/log', 'N/ui/message'], (query, log, message) => {
+define(['N/query', 'N/log', 'N/ui/message', 'N/runtime'], (query, log, message, runtime) => {
 
     // ===== Configuration =====
-    const APPROVED_STATUS = 4; // ID from customlist_acp_vonb_status
-    const REJECTED_STATUS = 5;
+    // Resolved at runtime from Script Parameters configured on the script deployment.
+    // Portable across NetSuite accounts: the customlist values' internal IDs differ per account,
+    // but the parameter references them by scriptid via deployment configuration.
+    const script = runtime.getCurrentScript();
+    const APPROVED_STATUS = Number(script.getParameter({ name: 'custscript_acp_vonb_approved_status' }));
+    const REJECTED_STATUS = Number(script.getParameter({ name: 'custscript_acp_vonb_rejected_status' }));
 
     /**
      * Search for the last onboarding request for the given vendor.

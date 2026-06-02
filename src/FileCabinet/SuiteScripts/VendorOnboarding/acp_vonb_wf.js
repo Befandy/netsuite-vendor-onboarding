@@ -8,12 +8,12 @@ define(['N/log', 'N/record'], (log, record) => {
 
     /**
      * @param {record.Record} requestRecord - the current onboarding request record
+     * @throws when the request has no linked vendor
      */
     const setVendorVerification = (requestRecord) => {
         const vendorId = requestRecord.getValue({ fieldId: 'custrecord_acp_vonb_vendor' });
         if (!vendorId) {
-            log.error('setVendorVerification:error', 'No vendor linked to the onboarding request');
-            return;
+            throw new Error('No vendor linked to the onboarding request ' + requestRecord.id);
         }
 
         record.submitFields({
@@ -28,11 +28,15 @@ define(['N/log', 'N/record'], (log, record) => {
 
     /**
      * Executes the workflow action. Set vendor verification flag and date after onboarding approval.
+     * Returns 'OK' on success, 'Error' on failure — the workflow transition can branch on this result
+     * to keep the request out of a successfully-approved state when the downstream side effect failed.
      * @param {context} context
+     * @returns {'OK' | 'Error'}
      */
     const onAction = (context) => {
         try {
             setVendorVerification(context.newRecord);
+            return 'OK';
         } catch (e) {
             log.error('onAction:error', JSON.stringify({
                 name: e.name,
@@ -40,6 +44,7 @@ define(['N/log', 'N/record'], (log, record) => {
                 stack: e.stack,
                 recordId: context.newRecord.id
             }));
+            return 'Error';
         }
     };
 

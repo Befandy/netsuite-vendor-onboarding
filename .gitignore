@@ -5,10 +5,10 @@
 *.key
 *.pem
 suitecloud-config.p12
-suitecloud.config.js
 
 # SuiteCloud project state (account-specific)
 project.json
+.suitecloud-sdk/
 
 # Build / deployment artefacts
 *.zip

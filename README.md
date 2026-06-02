@@ -72,9 +72,14 @@ Planned improvements after the production rollout:
 
 ## Setup
 
-This is source code and SDF objects, not a deployable bundle. To replicate in your own NetSuite account:
+This is a SuiteCloud account-customization project — `src/manifest.xml`, `src/deploy.xml`, and `suitecloud.config.js` at the repo root make it directly importable into a SuiteCloud-enabled workspace.
 
-1. Place SDF XML from [`src/Objects/`](src/Objects/) and JS from [`src/FileCabinet/SuiteScripts/VendorOnboarding/`](src/FileCabinet/SuiteScripts/VendorOnboarding/) into your own account-customization SDF project.
-2. Deploy via `suitecloud project:deploy`.
-3. Set up a TBA integration record and access token for Workato. The role on the token needs Custom Record Types, Custom Lists, Custom Fields (Setup tab, Edit), Full on the custom record, and SOAP Web Services.
-4. Build the Workato recipe in your workspace following the [recipe layout](docs/architecture.md#workato-recipe). Connecting Workato to NetSuite via TBA is covered by the [official Workato NetSuite connector docs](https://docs.workato.com/connectors/netsuite.html). Replace the SEC EDGAR HTTP step with your actual compliance provider.
+1. Clone the repo.
+2. From the repo root, point the SuiteCloud CLI at your target NetSuite account: `suitecloud account:setup`.
+3. Validate before deploying: `suitecloud project:validate`.
+4. Deploy: `suitecloud project:deploy`.
+5. After deploy, open the User Event script deployment in NetSuite and confirm the **Approved Status Value** and **Rejected Status Value** parameters point to the right list values from `customlist_acp_vonb_status`. SDF pre-fills them via portable script-id references, but the post-deploy UI confirmation is a defensive habit.
+6. Set up a TBA integration record and access token for Workato. The role on the token needs Custom Record Types, Custom Lists, Custom Fields (Setup tab, Edit), Full on the custom record, and SOAP Web Services.
+7. Build the Workato recipe in your workspace following the [recipe layout](docs/architecture.md#workato-recipe). Connecting Workato to NetSuite via TBA is covered by the [official Workato NetSuite connector docs](https://docs.workato.com/connectors/netsuite.html). Replace the SEC EDGAR HTTP step with your actual compliance provider.
+
+The SDF objects ship with `<status>TESTING</status>` and `<releasestatus>TESTING</releasestatus>` set on script deployments and on the workflow — appropriate for a reference implementation that the cloning user will validate before exposing to all roles. Switch to `RELEASED` once the configuration is verified in the target account.
